@@ -1,4 +1,5 @@
 {
+  "polarityIntegrationUuid": "7cc44230-aef6-11f0-b72c-65e02f7606ed",
   "name": "Cloudflare Domain Intel",
   "acronym": "CF",
   "onDemandOnly": true,
