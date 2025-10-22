@@ -1,5 +1,5 @@
 {
-  "name": "cloudflare-radar",
+  "name": "cloudflare-domain-intel",
   "version": "3.0.1",
   "main": "./integration.js",
   "private": true,
