@@ -1,6 +1,6 @@
 {
   "name": "cloudflare-domain-intel",
-  "version": "3.0.1",
+  "version": "3.0.0",
   "main": "./integration.js",
   "private": true,
   "dependencies": {
