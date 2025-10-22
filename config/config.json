@@ -1,0 +1,46 @@
+{
+  "polarityIntegrationUuid": "7cc44230-aef6-11f0-b72c-65e02f7606ed",
+  "name": "Cloudflare Domain Intel",
+  "acronym": "CF",
+  "onDemandOnly": true,
+  "defaultColor": "light-gray",
+  "description": "Lookup Domain category, risk, and resolution information via Cloudflare's Domain Intel API",
+  "dataTypes": [
+    "domain"
+  ],
+  "entityTypes": ["domain"],
+  "styles": [
+    "./styles/style.less"
+  ],
+  "block": {
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "accountId",
+      "name": "Cloudflare Account ID",
+      "description": "Your Cloudflare Account ID associated with the Account API token created below.",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "apiToken",
+      "name": "Cloudflare Account API Token",
+      "description": "A valid CloudFlare Account API Token with \"read\" access to \"Intel\".",
+      "default": "",
+      "type": "password",
+      "userCanEdit": false,
+      "adminOnly": true
+    }
+  ]
+}
