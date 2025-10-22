@@ -6,9 +6,9 @@ To use the integration you will need to sign up for a free Cloudflare account he
 
 <img src="assets/overlay.png" width="50%">
 
-## CloudFlare Domain Intel Integration Options
+## Cloudflare Domain Intel Integration Options
 
-### Cloudlfare Account ID
+### Cloudflare Account ID
 
 Your Cloudflare Account ID associated with the Account API token created below.
 
