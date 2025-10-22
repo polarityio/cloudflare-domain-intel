@@ -1,0 +1,132 @@
+{{#if (gt result.content_categories.length 0)}}
+  <h1 class="p-title">Content Categories</h1>
+  {{#each result.content_categories as | category |}}
+    <span class="p-tag">{{category.name}}</span>
+  {{/each}}
+{{/if}}
+
+{{#if (gt result.inherited_content_categories.length 0)}}
+  <h1 class="p-title">Inherited Content Category</h1>
+  {{#each result.inherited_content_categories as | content |}}
+    <span class="p-tag">{{content.name}}</span>
+  {{/each}}
+  <div>
+    <span class="p-key">Inherited from:</span>
+    <span class="p-value">{{result.inherited_from}}</span>
+  </div>
+{{/if}}
+
+{{#if (gt result.risk_type.length 0)}}
+  <h1 class="p-title">Risk Type</h1>
+  {{#each result.risk_type as | risk |}}
+    <span class="p-tag">{{risk.name}}</span>
+  {{/each}}
+{{/if}}
+
+{{#if (gt result.resolution_history.length 0)}}
+  <h1 class="p-title">Resolutions ({{result.resolution_history.length}})</h1>
+  
+  {{!-- Begining of Data Filter --}}
+  <div class="input-container">
+    <label class="small ifta-label">
+      Filter by Query or IP
+    </label>
+    {{input
+            class=(concat "ifta-field" (if uiElement.error " error"))
+            value=filterValue
+            placeholder="Enter filter value"
+            disabled=false
+            required=false
+    }}
+    {{#if (gt filterValue.length 0)}}
+      <span {{action (mut filterValue "")}}>
+        {{fa-icon icon="times-circle" fixedWidth=true class="clear-input-icon"}}
+      </span>
+    {{/if}}
+  </div>
+  {{!-- End of Data Filter --}}
+
+  {{!-- Beginning of Paging Header --}}
+  {{#if (gt filteredPagingData.length 0)}}
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <div class="pl-0 page-info p-footnote">
+        {{#if (gt filteredPagingData.length pageSize)}}
+          Viewing resolutions {{pagingStartItem}} - {{pagingEndItem}} of {{filteredPagingData.length}}
+        {{else}}
+          Viewing {{filteredPagingData.length}} resolutions
+        {{/if}}
+      </div>
+    </div>
+  {{else}}
+    <div class="p-footnote">
+      No results found
+    </div>
+  {{/if}}
+  {{!-- End of Paging Header --}}
+  
+  {{#each pagedPagingData as | resolution |}}
+    <div class="resolution-container">
+      <div>
+        <span class="p-key">First Observed:</span>
+        <span class="p-value">
+          {{moment-format
+            resolution.FirstObserved
+            MM/DD/YYYY HH:mm:ss
+            timeZone=timezone}}
+        </span>
+      </div>
+      <div>
+        <span class="p-key">Last Observed:</span>
+        <span class="p-value">
+          {{moment-format
+            resolution.LastObserved
+            MM/DD/YYYY HH:mm:ss
+            timeZone=timezone}}
+        </span>
+      </div>
+      <div>
+        <span class="p-key">Query:</span>
+        <span class="p-value">{{resolution.Query}}</span>
+      </div>
+      <div>
+        <span class="p-key">IP:</span>
+        <span class="p-value">{{resolution.IP}}</span>
+      </div>
+    </div>
+  {{/each}}
+  
+  {{!-- Resolution History Paging component --}}
+    {{#if (gt filteredPagingData.length pageSize)}}
+      <div class="paging-bar">
+        <div>
+          <span class="paging-bar-title">Resolutions</span>
+        </div>
+        <div class="d-flex align-items-center">
+          <button class="btn paging-btn" {{action "firstPage"}} disabled={{isPrevButtonsDisabled}}>
+            {{fa-icon icon="angle-double-left" fixedWidth=false}}
+          </button>
+          <button class="btn paging-btn" {{action "prevPage"}} disabled={{isPrevButtonsDisabled}}>
+            {{fa-icon icon="angle-left" fixedWidth=false}}
+          </button>
+          <div class="paging-info">
+            {{#if (eq pageSize 1)}}
+              {{pagingStartItem}} of {{filteredPagingData.length}}
+            {{else}}
+              {{pagingStartItem}} - {{pagingEndItem}} of {{filteredPagingData.length}}
+            {{/if}}
+          </div>
+          <button class="btn paging-btn" {{action "nextPage"}} disabled={{isNextButtonDisabled}}>
+            {{fa-icon icon="angle-right" fixedWidth=false}}
+          </button>
+          <button class="btn paging-btn" {{action "lastPage"}} disabled={{isNextButtonDisabled}}>
+            {{fa-icon icon="angle-double-right" fixedWidth=false}}
+          </button>
+        </div>
+      </div>
+    {{/if}}
+  {{!-- End of Paging Component --}}
+{{/if}}
+
+
+
+

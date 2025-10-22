@@ -1,0 +1,10 @@
+{
+  "name": "cloudflare-radar",
+  "version": "3.0.1",
+  "main": "./integration.js",
+  "private": true,
+  "dependencies": {
+    "polarity-integration-utils": "^2.0.8",
+    "zod": "^4.1.11"
+  }
+}
