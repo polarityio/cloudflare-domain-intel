@@ -1,10 +1,10 @@
 {
   "name": "cloudflare-domain-intel",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "./integration.js",
   "private": true,
   "dependencies": {
-    "polarity-integration-utils": "^2.0.8",
-    "zod": "^4.1.11"
+    "polarity-integration-utils": "^2.0.9",
+    "zod": "^4.3.6"
   }
 }
